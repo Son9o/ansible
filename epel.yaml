@@ -1,0 +1,18 @@
+---
+- hosts: aws
+  remote_user: ec2-user
+
+  tasks:
+  - name: Install epel
+    yum_repository:
+      name: epel
+      description: Extra Packages for Enterprise Linux 7 - $basearch 
+      file: epel
+      baseurl: http://download.fedoraproject.org/pub/epel/7/$basearch
+      mirrorlist: https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch 
+      failovermethod: priority
+      gpgkey: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 
+    become: true
+    yum:
+      name: epel-release
+      state: latest 
