@@ -1,6 +1,7 @@
 ---
 - hosts: aws
   remote_user: ec2-user
+  become_user: root
 
   tasks:
   - name: Install epel
@@ -13,6 +14,11 @@
       failovermethod: priority
       gpgkey: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 
     become: true
+    
+  - name: Install epel package
     yum:
       name: epel-release
       state: latest 
+    retries: 5
+    delay: 10
+    become: true
