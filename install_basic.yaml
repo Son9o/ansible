@@ -1,0 +1,12 @@
+---
+- hosts: all
+  
+  tasks:
+  - name: Install base package set 
+    yum:
+      state: present
+      name: "{{ item }}"
+    with_items:
+    - vim
+    - git 
+    - mutt
