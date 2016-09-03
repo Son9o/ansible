@@ -1,24 +1,22 @@
 ---
 - hosts: aws
   remote_user: ec2-user
-  become_user: root
+  become: true
 
   tasks:
-  - name: Install epel
-    yum_repository:
-      name: epel
-      description: Extra Packages for Enterprise Linux 7 - $basearch 
-      file: epel
-      baseurl: http://download.fedoraproject.org/pub/epel/7/$basearch
-      mirrorlist: https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch 
-      failovermethod: priority
-      gpgkey: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 
-    become: true
-    
-  - name: Install epel package
+  - name: Download eepel package
+    copy: 
+      src: /srv/ansible/epel-release-latest-7.noarch.rpm
+      dest: /root/epel-release-latest-7.noarch.rpm
+      force: yes
+
+  - name: Install EPEL RPM
+    yum: 
+      name: /root/epel-release-latest-7.noarch.rpm 
+      state: present
+
+  - name: Update EPEL package
     yum:
       name: epel-release
-      state: latest 
-    retries: 5
-    delay: 10
-    become: true
+      state: latest
+
