@@ -10,3 +10,5 @@
     - vim
     - git 
     - mutt
+    - iptables-services
+    - mailx
