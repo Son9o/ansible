@@ -1,0 +1,9 @@
+---
+- hosts: aws
+  remote_user: ec2-user
+  become: true
+
+  tasks:
+  - name: Name of task
+    module:
+      params:  

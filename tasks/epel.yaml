@@ -1,0 +1,22 @@
+---
+- hosts: aws
+  remote_user: ec2-user
+  become: true
+
+  tasks:
+  - name: Download eepel package
+    copy: 
+      src: /srv/ansible/epel-release-latest-7.noarch.rpm
+      dest: /root/epel-release-latest-7.noarch.rpm
+      force: yes
+
+  - name: Install EPEL RPM
+    yum: 
+      name: /root/epel-release-latest-7.noarch.rpm 
+      state: present
+
+  - name: Update EPEL package
+    yum:
+      name: epel-release
+      state: latest
+
