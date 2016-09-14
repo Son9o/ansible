@@ -4,3 +4,4 @@
 - include: iptables.yaml
 - include: mega.yaml
 - include: timezone.yaml
+- include: vim.yaml
