@@ -1,0 +1,10 @@
+---
+- name: Set  Time Zone to London
+  file:
+    src: /usr/share/zoneinfo/Europe/London
+    dest: /etc/localtime
+    force: yes 
+    state: link
+
+- name: Create /etc/timezone file for London
+  shell: "echo Europe/London > /etc/timezone"

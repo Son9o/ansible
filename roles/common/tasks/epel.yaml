@@ -1,0 +1,17 @@
+---
+- name: Copy epel package
+  copy: 
+    src: files/epel-release-latest-7.noarch.rpm
+    dest: /root/epel-release-latest-7.noarch.rpm
+    force: yes
+
+- name: Install EPEL RPM
+  yum: 
+    name: /root/epel-release-latest-7.noarch.rpm 
+    state: present
+
+- name: Update EPEL package
+  yum:
+    name: epel-release
+    state: latest
+

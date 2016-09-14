@@ -1,0 +1,9 @@
+---
+- hosts: aws
+  remote_user: ec2-user
+  become: true
+
+  tasks:
+  - include: tasks/epel.yaml
+  - include: tasks/iptables.yaml
+  - include: tasks/install_basic.yaml

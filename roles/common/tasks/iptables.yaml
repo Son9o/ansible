@@ -1,0 +1,20 @@
+---
+- name: Create Ansible drop-point
+  file: path=/root/ansible state=directory mode=0700
+
+- name: Copy iptables template to host
+  copy:
+    src: files/iptables_base.save 
+    dest: /root/ansible/iptables_base.save
+    force: yes
+
+- name: Import IPTables file
+  shell: "/usr/sbin/iptables-restore < /root/ansible/iptables_base.save"
+  args:
+    executable: /bin/bash
+
+- name: Save using service iptables save
+  shell: /usr/sbin/service iptables save
+  args:
+    executable: /bin/bash
+

@@ -1,0 +1,4 @@
+---
+- name: Name of task
+  module:
+    params:  
