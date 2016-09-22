@@ -1,0 +1,7 @@
+---
+- name: Create Git drop-point
+  file: path=/root/git state=directory mode=0750
+
+- name: Create Ansible drop-point
+  file: path=/root/ansible state=directory mode=0750
+

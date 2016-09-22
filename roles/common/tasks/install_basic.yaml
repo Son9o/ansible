@@ -9,3 +9,6 @@
   - iptables-services
   - mailx
   - mlocate
+
+- name: Prevent saving of sent message (can get bloated)
+  shell: "echo set copy = no > /etc/Muttrc.local"

@@ -1,0 +1,14 @@
+---
+- name: Pull backup Script from Git repo
+  git:
+    dest: /root/git/backup
+    force: yes
+    repo: https://github.com/Son9o/backup.git
+#    depth: 1 --version of git too old gives warning
+
+- name: Install backup script to crontab
+  cron: 
+    name: Backup script
+    minute: 5
+    hour: 4
+    job: /root/git/backup/backup.sh > /dev/null 2>&1 

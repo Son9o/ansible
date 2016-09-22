@@ -1,10 +1,10 @@
 - name: Copy MegaTools Package
   copy:
     src: files/megatools-1.9.98-1.x86_64.rpm
-    dest: /root/megatools-1.9.98-1.x86_64.rpm
+    dest: /root/ansible/megatools-1.9.98-1.x86_64.rpm
     force: yes
 
 - name: Install MegaTools RPM
   yum:
-    name: /root/megatools-1.9.98-1.x86_64.rpm
+    name: /root/ansible/megatools-1.9.98-1.x86_64.rpm
     state: present 

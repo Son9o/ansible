@@ -1,7 +1,9 @@
 ---
+- include: directories.yaml
 - include: epel.yaml
 - include: install_basic.yaml
 - include: iptables.yaml
 - include: mega.yaml
 - include: timezone.yaml
 - include: vim.yaml
+- include: backup.yaml

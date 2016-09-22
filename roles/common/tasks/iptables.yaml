@@ -1,7 +1,4 @@
 ---
-- name: Create Ansible drop-point
-  file: path=/root/ansible state=directory mode=0700
-
 - name: Copy iptables template to host
   copy:
     src: files/iptables_base.save 
