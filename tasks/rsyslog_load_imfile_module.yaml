@@ -1,0 +1,10 @@
+---
+- name: Enables rsyslog module to load files
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    insertafter: 'ModLoad immark'
+    line: 'module(load="imfile") #Allows to read from file'
+  notify:
+        - restart rsyslog
+  when: "'mysql_servers' in group_names"
+

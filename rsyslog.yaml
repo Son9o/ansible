@@ -1,0 +1,11 @@
+---
+- hosts: local
+  remote_user: ahochul
+  become: true
+
+  tasks:
+  - include: tasks/rsyslog_tograylog.yaml
+  - include: tasks/rsyslog_load_imfile_module.yaml
+  - include: tasks/rsyslog_read_msyql_log.yaml
+  handlers:
+  - include: handlers/restart-rsyslog.yaml

@@ -1,0 +1,10 @@
+---
+- name: Add entry to resyslog.cog to also send Syslogs to Graylog server
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    insertafter: EOF
+    line: "*.* @@10.10.91.104:1514;RSYSLOG_SyslogProtocol23Format"
+    backup: yes
+  notify: 
+    - restart rsyslog
+

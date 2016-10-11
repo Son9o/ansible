@@ -1,0 +1,10 @@
+---
+
+- name: Enables rsyslog module to read from file 
+  lineinfile:  
+    dest: /etc/rsyslog.conf
+    insertafter: 'module|imfile'
+    line: 'input(type="imfile" file="/var/log/mysql.err" tag="mysql_err" severity="info" facility="local1" stateFile="statef    ile-mysql-error")'
+  notify:
+      - restart rsyslog
+  when: "'mysql_servers' in group_names"
